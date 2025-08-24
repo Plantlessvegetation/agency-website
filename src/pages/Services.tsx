@@ -37,7 +37,7 @@ const services = [
     ],
     technologies: ['React', 'Next.js', 'Node.js', 'Python', 'WordPress', 'Shopify'],
     color: 'from-blue-500 to-blue-600',
-    pricing: 'Starting from $2,999'
+    pricing: 'Starting from ₹22,000'
   },
   {
     id: 'marketing',
@@ -57,7 +57,7 @@ const services = [
     ],
     technologies: ['Google Analytics', 'Facebook Business', 'HubSpot', 'Mailchimp', 'Hootsuite'],
     color: 'from-green-500 to-green-600',
-    pricing: 'Starting from $1,999/month'
+    pricing: 'Starting from ₹14,999/month'
   },
   {
     id: 'seo',
@@ -77,7 +77,7 @@ const services = [
     ],
     technologies: ['SEMrush', 'Ahrefs', 'Google Search Console', 'Screaming Frog', 'Moz'],
     color: 'from-purple-500 to-purple-600',
-    pricing: 'Starting from $899/month'
+    pricing: 'Starting from ₹3,499 (report generation)'
   },
   {
     id: 'marketplace',
@@ -97,7 +97,7 @@ const services = [
     ],
     technologies: ['Amazon Seller Central', 'eBay', 'Etsy', 'Walmart', 'Shopify', 'WooCommerce'],
     color: 'from-orange-500 to-orange-600',
-    pricing: 'Starting from $1,499/month'
+    pricing: 'Starting from ₹7,999/month'
   },
   {
     id: 'suppliers',
@@ -120,9 +120,9 @@ const services = [
     pricing: 'Custom pricing based on requirements'
   },
   {
-    id: 'dropshipping',
+    id: 'shipping',
     icon: Truck,
-    title: 'Dropshipping Services',
+    title: 'Shipping Solutions',
     shortDescription: 'End-to-end fulfillment and logistics management',
     fullDescription: 'Complete dropshipping solution that handles everything from order processing to customer delivery, allowing you to focus on growth.',
     features: [
@@ -137,7 +137,7 @@ const services = [
     ],
     technologies: ['Oberlo', 'Spocket', 'DSers', 'AliDropship', 'Modalyst'],
     color: 'from-pink-500 to-pink-600',
-    pricing: 'Starting from $799/month'
+    pricing: 'Starting from ₹499'
   },
 ];
 
@@ -189,18 +189,21 @@ export default function Services() {
                 className="group cursor-pointer"
                 onClick={() => setSelectedService(service)}
               >
-                <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-border transition-all duration-300 hover:shadow-lg">
-                  <CardHeader>
-                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                      <service.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
-                    <CardDescription className="text-muted-foreground mb-4">
-                      {service.shortDescription}
-                    </CardDescription>
-                    <div className="text-sm font-medium text-primary">{service.pricing}</div>
-                  </CardHeader>
-                </Card>
+                {/* Each card is a link that directs to a specific section on the pricing page */}
+                <Link to={`/pricing#${service.id}`}>
+                  <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-border transition-all duration-300 hover:shadow-lg">
+                    <CardHeader>
+                      <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                        <service.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
+                      <CardDescription className="text-muted-foreground mb-4">
+                        {service.shortDescription}
+                      </CardDescription>
+                      <div className="text-sm font-medium text-primary">{service.pricing}</div>
+                    </CardHeader>
+                  </Card>
+                </Link>
               </motion.div>
             ))}
           </div>
