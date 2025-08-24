@@ -128,8 +128,8 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Mobile Menu */}
-          <div className="lg:hidden flex items-center space-x-2">
+          {/* Mobile Menu & Theme Toggle */}
+          <div className="flex items-center space-x-2 lg:hidden">
             <Button
               variant="ghost"
               size="icon"
