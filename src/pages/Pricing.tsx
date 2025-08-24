@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Check, Star, ArrowRight, IndianRupee } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -9,6 +10,7 @@ const serviceCategories = [
   {
     name: 'Web Development',
     description: 'Beautiful, high-performing websites to establish and grow your business online.',
+    id: 'web-dev',
     plans: [
       {
         name: 'Basic Website',
@@ -59,6 +61,7 @@ const serviceCategories = [
   {
     name: 'Digital Marketing',
     description: 'Strategic marketing to increase your brand visibility and drive conversions.',
+    id: 'marketing',
     plans: [
       {
         name: 'Basic Marketing',
@@ -106,6 +109,7 @@ const serviceCategories = [
   {
     name: 'SEO & Reporting',
     description: 'Improve your search engine rankings and get found by more customers.',
+    id: 'seo',
     plans: [
       {
         name: 'SEO Audit & Report',
@@ -149,6 +153,7 @@ const serviceCategories = [
   {
     name: 'Shipping Solutions',
     description: 'Seamless logistics and reliable shipping for your e-commerce business.',
+    id: 'shipping',
     plans: [
       {
         name: 'Starter',
@@ -195,8 +200,48 @@ const serviceCategories = [
 ];
 
 export default function Pricing() {
+  const serviceSchema = serviceCategories.map(category => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": category.name,
+    "description": category.description,
+    "provider": {
+      "@type": "Organization",
+      "name": "DigitalForge"
+    }
+  }));
+
   return (
     <div className="min-h-screen pt-20">
+      <Helmet>
+        <title>Pricing Plans | Web Development, Marketing & SEO Services India - DigitalForge</title>
+        <meta name="description" content="Affordable pricing plans for web development, SEO, digital marketing, and shipping solutions in India. Choose a package that fits your business." />
+        <link rel="canonical" href="https://yourdomain.com/pricing" />
+
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Pricing Plans | DigitalForge Services India" />
+        <meta property="og:description" content="Transparent pricing for web design, marketing, SEO, and eCommerce solutions." />
+        <meta property="og:url" content="https://yourdomain.com/pricing" />
+        <meta property="og:image" content="https://yourdomain.com/og-pricing.jpg" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Pricing Plans | DigitalForge" />
+        <meta name="twitter:description" content="Affordable web development & digital marketing services in India." />
+        <meta name="twitter:image" content="https://yourdomain.com/og-pricing.jpg" />
+
+        {/* JSON-LD Schema Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
+      </Helmet>
+      
+      {/* Hidden H1 for SEO */}
+      <h1 className="sr-only">
+        DigitalForge Pricing Plans for Web Development & Digital Marketing Services in India
+      </h1>
+      
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -210,13 +255,9 @@ export default function Pricing() {
               <Star className="w-4 h-4 mr-2" />
               Our Services
             </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Simple, Transparent
-              </span>
-              <br />
-              Pricing
-            </h1>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+              Pricing Plans
+            </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Choose the perfect solution for your business. Our service-based pricing ensures you only pay for what you need.
             </p>
@@ -228,7 +269,8 @@ export default function Pricing() {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {serviceCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="mb-20">
+            // Added id to each category for direct linking from Services page
+            <div key={categoryIndex} id={category.id} className="mb-20">
               <motion.div
                 className="text-center mb-16"
                 initial={{ opacity: 0, y: 20 }}

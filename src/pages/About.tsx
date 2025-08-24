@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Users, Award, Target, Lightbulb, Heart, Zap } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -64,6 +65,10 @@ const team = [
 export default function About() {
   return (
     <div className="min-h-screen pt-20">
+      <Helmet>
+        <title>About DigitalForge - Leading Web Development & Digital Marketing Agency India</title>
+        <meta name="description" content="Learn about DigitalForge, a leading web development and digital marketing agency in India. Discover our mission, vision, and the values that drive our team to deliver exceptional results." />
+      </Helmet>
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,12 +82,9 @@ export default function About() {
               <Users className="w-4 h-4 mr-2" />
               About DigitalForge
             </Badge>
+            {/* The main <h1> for the page */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Forging Digital Excellence
-              </span>
-              <br />
-              Since 2024
+              About DigitalForge – Leading Web Development & Digital Marketing Agency India
             </h1>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               We're not just another digital agency. We're your partners in transformation, 
@@ -148,7 +150,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}

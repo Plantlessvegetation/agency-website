@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { 
   Code, 
   TrendingUp, 
@@ -23,8 +24,8 @@ const services = [
     id: 'web-dev',
     icon: Code,
     title: 'Web Development & Maintenance',
-    shortDescription: 'Custom websites and applications built with cutting-edge technologies',
-    fullDescription: 'From concept to deployment, we create responsive, fast, and SEO-optimized websites that convert visitors into customers.',
+    shortDescription: 'Custom websites and applications for Indian businesses built with cutting-edge technologies',
+    fullDescription: 'From concept to deployment, we create responsive, fast, and SEO-optimized websites that convert visitors into customers for businesses in India.',
     features: [
       'Custom Web Applications',
       'E-commerce Platforms',
@@ -43,8 +44,8 @@ const services = [
     id: 'marketing',
     icon: TrendingUp,
     title: 'Digital Marketing',
-    shortDescription: 'Strategic campaigns that drive engagement and conversions',
-    fullDescription: 'Comprehensive digital marketing strategies that amplify your brand presence and drive measurable business growth.',
+    shortDescription: 'Strategic campaigns that drive engagement and conversions for businesses in India',
+    fullDescription: 'Comprehensive digital marketing strategies that amplify your brand presence and drive measurable business growth in the Indian market.',
     features: [
       'Social Media Management (SMO/SMM)',
       'Paid Advertising (Google Ads, Facebook Ads)',
@@ -63,8 +64,8 @@ const services = [
     id: 'seo',
     icon: Search,
     title: 'SEO Reports & Rank Optimization',
-    shortDescription: 'Boost your search rankings and organic traffic',
-    fullDescription: 'Data-driven SEO strategies that improve your search engine visibility and drive qualified organic traffic to your website.',
+    shortDescription: 'Boost your search rankings and organic traffic for businesses in India',
+    fullDescription: 'Data-driven SEO strategies that improve your search engine visibility and drive qualified organic traffic to your website in the Indian market.',
     features: [
       'Comprehensive SEO Audits',
       'Keyword Research & Strategy',
@@ -83,8 +84,8 @@ const services = [
     id: 'marketplace',
     icon: ShoppingCart,
     title: 'Marketplace Listing & Sales Growth',
-    shortDescription: 'Complete e-commerce and marketplace integration',
-    fullDescription: 'Maximize your reach and sales across multiple online marketplaces with our comprehensive listing and optimization services.',
+    shortDescription: 'Complete e-commerce and marketplace integration for Indian sellers',
+    fullDescription: 'Maximize your reach and sales across multiple online marketplaces with our comprehensive listing and optimization services tailored for Indian sellers.',
     features: [
       'Multi-platform Marketplace Setup',
       'Product Listing Optimization',
@@ -103,8 +104,8 @@ const services = [
     id: 'suppliers',
     icon: Package,
     title: 'Supplier Solutions',
-    shortDescription: 'Access to quality suppliers for various product categories',
-    fullDescription: 'Connect with verified suppliers and streamline your sourcing process for clothing, gadgets, household items, and more.',
+    shortDescription: 'Access to quality suppliers for various product categories in India',
+    fullDescription: 'Connect with verified suppliers and streamline your sourcing process for clothing, gadgets, household items, and more, specifically in the Indian market.',
     features: [
       'Verified Supplier Network',
       'Product Sourcing',
@@ -123,8 +124,8 @@ const services = [
     id: 'shipping',
     icon: Truck,
     title: 'Shipping Solutions',
-    shortDescription: 'End-to-end fulfillment and logistics management',
-    fullDescription: 'Complete dropshipping solution that handles everything from order processing to customer delivery, allowing you to focus on growth.',
+    shortDescription: 'End-to-end fulfillment and logistics management for businesses in India',
+    fullDescription: 'Complete shipping solution that handles everything from order processing to customer delivery, allowing you to focus on growth in the Indian market.',
     features: [
       'Automated Order Processing',
       'Global Shipping Network',
@@ -144,8 +145,37 @@ const services = [
 export default function Services() {
   const [selectedService, setSelectedService] = useState(services[0]);
 
+  const serviceSchema = services.map(service => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": service.title,
+    "description": service.fullDescription,
+    "provider": {
+      "@type": "Organization",
+      "name": "DigitalForge"
+    }
+  }));
+
   return (
     <div className="min-h-screen pt-20">
+      <Helmet>
+        <title>Our Services: Web Development, SEO & Digital Marketing India | DigitalForge</title>
+        <meta name="description" content="Explore a full suite of digital services from web development and SEO to digital marketing and e-commerce solutions for businesses in India." />
+        <link rel="canonical" href="https://yourdomain.com/services" />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Our Services | Web Development, SEO & Digital Marketing India" />
+        <meta property="og:description" content="Discover our comprehensive digital solutions, including web development, SEO, and marketing services for businesses in India." />
+        <meta property="og:url" content="https://yourdomain.com/services" />
+        <meta property="og:image" content="https://yourdomain.com/og-services.jpg" />
+        <meta property="og:type" content="website" />
+
+        {/* JSON-LD Schema Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
+      </Helmet>
+      
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -159,12 +189,9 @@ export default function Services() {
               <BarChart3 className="w-4 h-4 mr-2" />
               Our Services
             </Badge>
+            {/* The main <h1> for the page */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Comprehensive Digital
-              </span>
-              <br />
-              Solutions
+              Our Services: Web Development, SEO & Digital Marketing India
             </h1>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               From web development to digital marketing, we provide end-to-end services 
@@ -231,7 +258,7 @@ export default function Services() {
                 </div>
               </CardHeader>
 
-              <CardContent>
+                <CardContent>
                 <Tabs defaultValue="features" className="w-full">
                   <TabsList className="grid w-full grid-cols-3">
                     <TabsTrigger value="features">Features</TabsTrigger>

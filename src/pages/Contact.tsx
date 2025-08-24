@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
+import { Helmet } from 'react-helmet-async';
 
 const contactInfo = [
   {
@@ -89,8 +90,42 @@ export default function Contact() {
     }, 2000);
   };
 
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "DigitalForge",
+    "image": "https://yourdomain.com/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Digital Avenue",
+      "addressLocality": "Tech City",
+      "postalCode": "12345",
+      "addressCountry": "India"
+    },
+    "telephone": "+1-555-123-4567",
+    "email": "hello@digitalforge.com",
+    "url": "https://yourdomain.com/contact"
+  };
+
   return (
     <div className="min-h-screen pt-20">
+      <Helmet>
+        <title>Contact DigitalForge | Web Development & Marketing Agency India</title>
+        <meta name="description" content="Get in touch with DigitalForge for web development, SEO, and marketing services in India. Call, email, or visit us today." />
+        <link rel="canonical" href="https://yourdomain.com/contact" />
+
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Contact DigitalForge | Web Development & Marketing Agency India" />
+        <meta property="og:description" content="Reach out to DigitalForge for your website, SEO, and digital marketing needs." />
+        <meta property="og:url" content="https://yourdomain.com/contact" />
+        <meta property="og:image" content="https://yourdomain.com/og-contact.jpg" />
+
+        {/* JSON-LD Schema Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify(localBusinessSchema)}
+        </script>
+      </Helmet>
+
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -103,12 +138,9 @@ export default function Contact() {
               <MessageCircle className="w-4 h-4 mr-2" />
               Contact Us
             </Badge>
+            {/* The main <h1> for the page */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Let's Start Your
-              </span>
-              <br />
-              Digital Journey
+              Contact DigitalForge – Web Development & Marketing Agency India
             </h1>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Ready to transform your business? Get in touch with our experts and discover 
@@ -265,6 +297,42 @@ export default function Contact() {
               </Card>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Google Maps Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-3xl font-bold mb-4">Find Us on the Map</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our office is located in the heart of Tech City, ready to welcome you.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="rounded-xl overflow-hidden shadow-lg aspect-w-16 aspect-h-9"
+          >
+            {/* Note: Replace this iframe with your actual Google Maps embed code */}
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019864234057!2d144.96328!3d-37.81421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d6b3a2f7c0a!2sTech%20City!5e0!3m2!1sen!2sin!4v1625458055660!5m2!1sen!2sin"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              title="Our location on Google Maps"
+            ></iframe>
+          </motion.div>
         </div>
       </section>
 
