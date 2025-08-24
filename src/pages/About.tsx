@@ -29,61 +29,35 @@ const values = [
 
 const timeline = [
   {
-    year: '2019',
-    title: 'Foundation',
-    description: 'Started with a vision to democratize digital excellence for businesses of all sizes.',
-  },
-  {
-    year: '2020',
-    title: 'First 100 Clients',
-    description: 'Reached our first milestone during the digital transformation boom.',
-  },
-  {
-    year: '2021',
-    title: 'Global Expansion',
-    description: 'Extended services internationally, helping businesses across 25+ countries.',
-  },
-  {
-    year: '2022',
-    title: 'Innovation Hub',
-    description: 'Launched advanced AI-driven marketing solutions and automation platforms.',
-  },
-  {
-    year: '2023',
-    title: 'Market Leader',
-    description: 'Became the go-to partner for digital transformation in multiple industries.',
-  },
-  {
     year: '2024',
-    title: 'Future Focus',
-    description: 'Continuing to innovate with Web3, AI, and next-generation digital solutions.',
+    title: 'Foundation',
+    description: 'Officially launched on December 9th, 2024, with a vision to empower businesses digitally.',
+  },
+  {
+    year: '2025',
+    title: 'Initial Growth',
+    description: 'Focused on building a strong client base and refining our core service offerings.',
   },
 ];
 
 const team = [
   {
-    name: 'Alex Morgan',
+    name: 'Vinayak Shukla',
     role: 'CEO & Founder',
     image: '/api/placeholder/150/150',
-    description: 'Visionary leader with 15+ years in digital transformation.',
+    description: 'Visionary leader with a passion for digital transformation.',
   },
   {
-    name: 'Sarah Chen',
+    name: 'Aditya Bajpai',
     role: 'CTO',
     image: '/api/placeholder/150/150',
     description: 'Tech innovator specializing in scalable web architectures.',
   },
   {
-    name: 'Michael Rodriguez',
+    name: 'Rydham',
     role: 'Head of Marketing',
     image: '/api/placeholder/150/150',
-    description: 'Growth expert who has driven $100M+ in client revenue.',
-  },
-  {
-    name: 'Emily Johnson',
-    role: 'Head of Operations',
-    image: '/api/placeholder/150/150',
-    description: 'Operations strategist ensuring seamless project delivery.',
+    description: 'Growth expert who has driven measurable success for clients.',
   },
 ];
 
@@ -108,7 +82,7 @@ export default function About() {
                 Forging Digital Excellence
               </span>
               <br />
-              Since 2019
+              Since 2024
             </h1>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               We're not just another digital agency. We're your partners in transformation, 
@@ -265,7 +239,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
             {team.map((member, index) => (
               <motion.div
                 key={member.name}
