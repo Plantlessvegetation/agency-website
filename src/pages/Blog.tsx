@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
 import { Calendar, User, ArrowRight, Search, BookOpen } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -88,38 +87,8 @@ export default function Blog() {
   const featuredPost = blogPosts.find(post => post.featured);
   const regularPosts = blogPosts.filter(post => !post.featured);
 
-  const blogSchema = blogPosts.map(post => ({
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": post.title,
-    "image": `https://yourdomain.com${post.image}`,
-    "datePublished": post.publishDate,
-    "author": {
-      "@type": "Person",
-      "name": post.author
-    }
-  }));
-
   return (
     <div className="min-h-screen pt-20">
-      <Helmet>
-        <title>DigitalForge Blog | SEO, Web Development & Marketing Insights</title>
-        <meta name="description" content="Read the latest articles on SEO, digital marketing, web development, and business growth strategies by DigitalForge experts." />
-        <link rel="canonical" href="https://yourdomain.com/blog" />
-
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="DigitalForge Blog | SEO & Digital Marketing Insights" />
-        <meta property="og:description" content="Stay updated with expert tips on SEO, marketing, and web development." />
-        <meta property="og:url" content="https://yourdomain.com/blog" />
-        <meta property="og:image" content="https://yourdomain.com/og-blog.jpg" />
-        <meta property="og:type" content="website" />
-
-        {/* JSON-LD Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify(blogSchema)}
-        </script>
-      </Helmet>
-      
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -133,9 +102,12 @@ export default function Blog() {
               <BookOpen className="w-4 h-4 mr-2" />
               Blog & Resources
             </Badge>
-            {/* The main <h1> for the page */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              DigitalForge Blog – Web Development & Marketing Tips India
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Digital Insights
+              </span>
+              <br />
+              & Expert Tips
             </h1>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Stay ahead of the curve with our latest insights on digital marketing, 
@@ -268,8 +240,10 @@ export default function Blog() {
                 <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-border transition-all duration-300 hover:shadow-lg overflow-hidden">
                   <div className="aspect-video bg-gradient-to-br from-blue-500/20 to-purple-500/20">
                     <div className="w-full h-full flex items-center justify-center">
-                      {/* Note: Replace this placeholder with a real image and descriptive alt text */}
-                      <img src={post.image} alt={`Article image for ${post.title}`} className="w-full h-full object-cover" />
+                      <div className="text-center">
+                        <BookOpen className="w-8 h-8 mx-auto mb-2 text-primary/60" />
+                        <p className="text-xs text-muted-foreground">[Article Image]</p>
+                      </div>
                     </div>
                   </div>
                   

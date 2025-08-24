@@ -5,7 +5,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Helmet } from 'react-helmet-async';
 
 const projects = [
   // --- Web Development Projects (12 new + 1 existing = 13 total) ---
@@ -551,25 +550,6 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen pt-20">
-      <Helmet>
-        <title>Portfolio - Web Development & Digital Marketing Projects India | DigitalForge</title>
-        <meta name="description" content="Explore successful web development, e-commerce, and digital marketing projects by DigitalForge. See how we've helped Indian businesses grow." />
-        <link rel="canonical" href="https://yourdomain.com/portfolio" />
-
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="Our Portfolio | Web Development & Digital Marketing" />
-        <meta property="og:description" content="View our case studies and successful projects for businesses in India." />
-        <meta property="og:url" content="https://yourdomain.com/portfolio" />
-        <meta property="og:image" content="https://yourdomain.com/og-portfolio.jpg" />
-        <meta property="og:type" content="website" />
-
-        {/* Twitter Card Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Our Portfolio | DigitalForge" />
-        <meta name="twitter:description" content="See our work in web development, e-commerce, and digital marketing." />
-        <meta name="twitter:image" content="https://yourdomain.com/og-portfolio.jpg" />
-      </Helmet>
-
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -583,9 +563,12 @@ export default function Portfolio() {
               <Award className="w-4 h-4 mr-2" />
               Portfolio & Case Studies
             </Badge>
-            {/* The main <h1> for the page */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Portfolio – Web Development & Digital Marketing Projects India
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Success Stories
+              </span>
+              <br />
+              That Inspire
             </h1>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Discover how we've helped businesses achieve extraordinary growth through 
@@ -635,8 +618,10 @@ export default function Portfolio() {
                   {/* Project Image */}
                   <div className="relative aspect-video bg-gradient-to-br from-blue-500/20 to-purple-500/20 overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      {/* Note: Replace this placeholder with a real image */}
-                      <img src={project.image} alt={`Screenshot of ${project.title}`} className="w-full h-full object-cover" />
+                      <div className="text-center">
+                        <TrendingUp className="w-12 h-12 mx-auto mb-2 text-primary/60" />
+                        <p className="text-xs text-muted-foreground">[Project Screenshot]</p>
+                      </div>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     
@@ -654,10 +639,8 @@ export default function Portfolio() {
                     <div className="flex items-center justify-between mb-2">
                       <Badge variant="secondary">{project.category}</Badge>
                     </div>
-                    <CardTitle className="text-xl mb-2 line-clamp-2 group-hover:text-primary transition-colors">
-                      {project.title}
-                    </CardTitle>
-                    <CardDescription className="text-muted-foreground mb-4 line-clamp-3">
+                    <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
+                    <CardDescription className="text-muted-foreground mb-4">
                       {project.description}
                     </CardDescription>
                     
@@ -677,7 +660,7 @@ export default function Portfolio() {
                       {Object.entries(project.results).map(([key, value]) => (
                         <div key={key} className="text-center">
                           <div className="text-lg font-bold text-primary">{value}</div>
-                          <div className="text-xs text-muted-foreground capitalize">{key.replace(/_/g, ' ')}</div>
+                          <div className="text-xs text-muted-foreground capitalize">{key}</div>
                         </div>
                       ))}
                     </div>
