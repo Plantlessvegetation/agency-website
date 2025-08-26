@@ -52,7 +52,7 @@ const App = () => {
             <Toaster />
             <HelmetProvider>
               <BrowserRouter>
-                <div className="relative min-h-screen bg-background">
+                <div className="relative min-h-screen bg-background overflow-x-hidden">
                   <Navbar />
                   <main className="relative z-10">
                     <Routes>
