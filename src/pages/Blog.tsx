@@ -38,7 +38,7 @@ const blogPosts = [
     title: 'How Digital Marketing Builds Trust and Drives Customer Loyalty',
     excerpt: 'Discover the strategic steps to build a strong brand presence and engage with your audience. We cover social media, content strategy, and paid advertising.',
     category: 'Marketing',
-    author: 'Rydham',
+    author: 'Rhythm',
     authorImage: '/api/placeholder/40/40',
     publishDate: '2025-08-20',
     readTime: '8 min read',
