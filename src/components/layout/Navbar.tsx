@@ -57,8 +57,8 @@ export default function Navbar() {
             {/* Logo on the left */}
             <div className="flex items-center space-x-2">
               <Link to="/" className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">DF</span>
+                <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">DF</span>
                 </div>
                 <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   DigitalForge
@@ -71,7 +71,6 @@ export default function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-8 w-8"
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               >
                 {theme === 'dark' ? (
@@ -82,7 +81,7 @@ export default function Navbar() {
               </Button>
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="h-8 w-8">
+                  <Button variant="ghost" size="icon">
                     <Menu className="h-4 w-4" />
                   </Button>
                 </SheetTrigger>
@@ -143,22 +142,31 @@ export default function Navbar() {
               </span>
             </Link>
 
-            <div className="flex items-center space-x-2">
+            <div className="relative flex items-center space-x-2 bg-card/50 backdrop-blur-sm rounded-full p-1 border border-border/50">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`relative text-sm font-medium transition-colors hover:text-primary ${
-                    location.pathname === item.href
-                      ? 'text-primary'
-                      : 'text-muted-foreground'
-                  }`}
+                  className="relative px-4 py-2 text-sm font-medium rounded-full z-10 transition-colors duration-300"
                 >
-                  {item.name}
+                  <motion.span
+                    className={`relative z-20 transition-colors duration-300 ${
+                      location.pathname === item.href
+                        ? 'text-white'
+                        : 'text-muted-foreground hover:text-primary'
+                    }`}
+                  >
+                    {item.name}
+                  </motion.span>
                   {location.pathname === item.href && (
                     <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600"
-                      layoutId="activeTab"
+                      layoutId="active-indicator"
+                      className="absolute inset-0 rounded-full bg-orange-500/80"
+                      transition={{
+                        type: 'spring',
+                        stiffness: 350,
+                        damping: 30,
+                      }}
                     />
                   )}
                 </Link>
