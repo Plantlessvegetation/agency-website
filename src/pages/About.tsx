@@ -233,7 +233,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Meet Our Team</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Meet Out Key Members</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               The brilliant minds behind DigitalForge, each bringing unique expertise and passion.
             </p>
