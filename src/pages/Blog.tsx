@@ -1,94 +1,150 @@
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Calendar, User, ArrowRight, Search, BookOpen } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Link } from 'react-router-dom';
 
 const blogPosts = [
   {
     id: 1,
-    title: 'The Complete Guide to E-commerce SEO in 2024',
-    excerpt: 'Discover the latest SEO strategies that are driving e-commerce success in 2024. From technical optimizations to content strategies.',
-    category: 'SEO',
-    author: 'Sarah Chen',
+    title: 'Why a Strong Online Presence is Critical for Indian Businesses Today',
+    excerpt: 'In the digital age, a professional website is your most valuable asset. Learn how it builds trust, attracts customers, and drives growth in the Indian market.',
+    category: 'Business',
+    author: 'Vinayak Shukla',
     authorImage: '/api/placeholder/40/40',
-    publishDate: '2024-03-15',
-    readTime: '8 min read',
+    publishDate: '2025-08-25',
+    readTime: '7 min read',
     featured: true,
     image: '/api/placeholder/600/300'
   },
   {
     id: 2,
-    title: 'Dropshipping vs. Traditional E-commerce: Which is Right for You?',
-    excerpt: 'A comprehensive comparison of dropshipping and traditional e-commerce models, including pros, cons, and when to choose each.',
-    category: 'Business',
-    author: 'Michael Rodriguez',
+    title: 'The Ultimate Guide to Modern Web Development Technologies',
+    excerpt: 'Explore the latest technologies like React, Next.js, and Framer that are used to build high-performance, scalable websites. A must-read for anyone starting a new project.',
+    category: 'Web Development',
+    author: 'Aditya Bajpai',
     authorImage: '/api/placeholder/40/40',
-    publishDate: '2024-03-12',
-    readTime: '6 min read',
+    publishDate: '2025-08-22',
+    readTime: '10 min read',
     featured: false,
     image: '/api/placeholder/400/250'
   },
   {
     id: 3,
-    title: 'Web Design Trends That Will Dominate 2024',
-    excerpt: 'From AI-powered interfaces to sustainable design practices, explore the web design trends shaping the digital landscape.',
-    category: 'Design',
-    author: 'Emily Johnson',
+    title: 'How Digital Marketing Builds Trust and Drives Customer Loyalty',
+    excerpt: 'Discover the strategic steps to build a strong brand presence and engage with your audience. We cover social media, content strategy, and paid advertising.',
+    category: 'Marketing',
+    author: 'Rydham',
     authorImage: '/api/placeholder/40/40',
-    publishDate: '2024-03-10',
-    readTime: '5 min read',
+    publishDate: '2025-08-20',
+    readTime: '8 min read',
     featured: false,
     image: '/api/placeholder/400/250'
   },
   {
     id: 4,
-    title: 'How to Scale Your Digital Marketing in 2024',
-    excerpt: 'Proven strategies for scaling your digital marketing efforts, from automation tools to advanced analytics.',
-    category: 'Marketing',
-    author: 'Alex Morgan',
+    title: 'Beyond Keywords: Advanced SEO Strategies for 2025',
+    excerpt: 'Move past the basics. Our experts share insights on technical SEO, link building, and content clusters to help your website dominate search rankings.',
+    category: 'SEO',
+    author: 'Priya Sharma',
     authorImage: '/api/placeholder/40/40',
-    publishDate: '2024-03-08',
-    readTime: '7 min read',
+    publishDate: '2025-08-18',
+    readTime: '9 min read',
     featured: false,
     image: '/api/placeholder/400/250'
   },
   {
     id: 5,
-    title: 'Building High-Converting Landing Pages',
-    excerpt: 'Learn the essential elements and psychology behind landing pages that convert visitors into customers.',
-    category: 'Conversion',
-    author: 'David Kim',
+    title: 'Creating High-Converting Shopify Stores for the Indian Market',
+    excerpt: 'A step-by-step guide to building a profitable e-commerce store. We cover custom theme development, payment gateways, and local marketing tips.',
+    category: 'E-commerce',
+    author: 'Kunal Verma',
     authorImage: '/api/placeholder/40/40',
-    publishDate: '2024-03-05',
-    readTime: '6 min read',
+    publishDate: '2025-08-15',
+    readTime: '12 min read',
     featured: false,
     image: '/api/placeholder/400/250'
   },
   {
     id: 6,
-    title: 'The Future of AI in Digital Marketing',
-    excerpt: 'Explore how artificial intelligence is revolutionizing digital marketing and what it means for businesses.',
+    title: 'The Role of Custom Software in Streamlining Your Operations',
+    excerpt: 'Learn how multi-user panels, custom dashboards, and automation tools can improve your team\'s productivity and business efficiency.',
     category: 'Technology',
-    author: 'Lisa Wang',
+    author: 'Anjali Gupta',
     authorImage: '/api/placeholder/40/40',
-    publishDate: '2024-03-01',
-    readTime: '9 min read',
+    publishDate: '2025-08-10',
+    readTime: '6 min read',
     featured: false,
     image: '/api/placeholder/400/250'
-  }
+  },
+  {
+    id: 7,
+    title: 'Marketing Automation 101: Tools and Tactics for Beginners',
+    excerpt: 'An introductory guide to marketing automation. Discover how to save time and increase your ROI with tools like HubSpot and Mailchimp.',
+    category: 'Marketing',
+    author: 'Rohit Mehta',
+    authorImage: '/api/placeholder/40/40',
+    publishDate: '2025-08-05',
+    readTime: '5 min read',
+    featured: false,
+    image: '/api/placeholder/400/250'
+  },
+  {
+    id: 8,
+    title: 'From Idea to Reality: Building Your Custom SaaS Platform',
+    excerpt: 'A deep dive into the process of building a custom SaaS platform. We explore key steps from concept validation to launch, focusing on scalability and user experience.',
+    category: 'Technology',
+    author: 'Aditya Bajpai',
+    authorImage: '/api/placeholder/40/40',
+    publishDate: '2025-08-01',
+    readTime: '11 min read',
+    featured: false,
+    image: '/api/placeholder/400/250'
+  },
 ];
 
-const categories = ['All', 'SEO', 'Marketing', 'Design', 'Business', 'Technology', 'Conversion'];
+const categories = ['All', 'SEO', 'Marketing', 'E-commerce', 'Business', 'Technology', 'Web Development'];
 
 export default function Blog() {
   const featuredPost = blogPosts.find(post => post.featured);
   const regularPosts = blogPosts.filter(post => !post.featured);
 
+  const blogSchema = blogPosts.map(post => ({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "image": `https://yourdomain.com${post.image}`,
+    "datePublished": post.publishDate,
+    "author": {
+      "@type": "Person",
+      "name": post.author
+    }
+  }));
+
   return (
     <div className="min-h-screen pt-20">
+      <Helmet>
+        <title>DigitalForge Blog | SEO, Web Development & Marketing Insights</title>
+        <meta name="description" content="Read the latest articles on SEO, digital marketing, web development, and business growth strategies by DigitalForge experts." />
+        <link rel="canonical" href="https://yourdomain.com/blog" />
+
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="DigitalForge Blog | SEO & Digital Marketing Insights" />
+        <meta property="og:description" content="Stay updated with expert tips on SEO, marketing, and web development." />
+        <meta property="og:url" content="https://yourdomain.com/blog" />
+        <meta property="og:image" content="https://yourdomain.com/og-blog.jpg" />
+        <meta property="og:type" content="website" />
+
+        {/* JSON-LD Schema Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify(blogSchema)}
+        </script>
+      </Helmet>
+      
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,12 +158,9 @@ export default function Blog() {
               <BookOpen className="w-4 h-4 mr-2" />
               Blog & Resources
             </Badge>
+            {/* The main <h1> for the page */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Digital Insights
-              </span>
-              <br />
-              & Expert Tips
+              DigitalForge Blog – Web Development & Marketing Tips India
             </h1>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Stay ahead of the curve with our latest insights on digital marketing, 
@@ -163,10 +216,8 @@ export default function Blog() {
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className="aspect-video lg:aspect-auto bg-gradient-to-br from-blue-500/20 to-purple-500/20">
                     <div className="w-full h-full flex items-center justify-center">
-                      <div className="text-center">
-                        <BookOpen className="w-16 h-16 mx-auto mb-4 text-primary/60" />
-                        <p className="text-sm text-muted-foreground">[Featured Article Image]</p>
-                      </div>
+                      {/* Note: Replace this placeholder with a real image and descriptive alt text */}
+                      <img src={featuredPost.image} alt={`Article image for ${featuredPost.title}`} className="w-full h-full object-cover" />
                     </div>
                   </div>
                   
@@ -200,9 +251,12 @@ export default function Blog() {
                         </div>
                       </div>
                       
-                      <Button>
-                        Read More
-                        <ArrowRight className="ml-2 h-4 w-4" />
+                      <Button asChild>
+                        {/* The "Read More" button for the featured post now links to a dynamic URL */}
+                        <Link to={`/blog/${featuredPost.id}`}>
+                          Read More
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
                       </Button>
                     </div>
                   </CardContent>
@@ -240,10 +294,8 @@ export default function Blog() {
                 <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-border transition-all duration-300 hover:shadow-lg overflow-hidden">
                   <div className="aspect-video bg-gradient-to-br from-blue-500/20 to-purple-500/20">
                     <div className="w-full h-full flex items-center justify-center">
-                      <div className="text-center">
-                        <BookOpen className="w-8 h-8 mx-auto mb-2 text-primary/60" />
-                        <p className="text-xs text-muted-foreground">[Article Image]</p>
-                      </div>
+                      {/* Note: Replace this placeholder with a real image and descriptive alt text */}
+                      <img src={post.image} alt={`Article image for ${post.title}`} className="w-full h-full object-cover" />
                     </div>
                   </div>
                   
@@ -277,9 +329,12 @@ export default function Blog() {
                       </div>
                     </div>
                     
-                    <Button variant="ghost" className="w-full mt-4 group-hover:bg-primary/10 transition-colors">
-                      Read Article
-                      <ArrowRight className="ml-2 h-3 w-3" />
+                    <Button variant="ghost" className="w-full mt-4 group-hover:bg-primary/10 transition-colors" asChild>
+                      {/* The "Read More" buttons now link to dynamic URLs */}
+                      <Link to={`/blog/${post.id}`}>
+                        Read Article
+                        <ArrowRight className="ml-2 h-3 w-3" />
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>

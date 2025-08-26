@@ -9,6 +9,7 @@ import Footer from '@/components/layout/Footer';
 import FloatingCTA from '@/components/layout/FloatingCTA';
 import LoadingScreen from '@/components/ui/loading-screen';
 import ScrollToTop from '@/components/ui/scroll-to-top';
+import { HelmetProvider } from 'react-helmet-async';
 
 // Pages
 import Home from '@/pages/Home';
@@ -23,6 +24,7 @@ import Dashboard from '@/pages/Dashboard';
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import NotFound from '@/pages/NotFound';
+import BlogPost from '@/pages/BlogPost'; // New import for the blog post page
 import { useState, useEffect } from 'react';
 
 const queryClient = new QueryClient();
@@ -48,30 +50,33 @@ const App = () => {
         <AuthProvider>
           <TooltipProvider>
             <Toaster />
-            <BrowserRouter>
-              <div className="relative min-h-screen bg-background overflow-x-hidden">
-                <Navbar />
-                <main className="relative z-10">
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/services" element={<Services />} />
-                    <Route path="/marketplace" element={<Marketplace />} />
-                    <Route path="/pricing" element={<Pricing />} />
-                    <Route path="/portfolio" element={<Portfolio />} />
-                    <Route path="/blog" element={<Blog />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/dashboard/*" element={<Dashboard />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </main>
-                <Footer />
-                <FloatingCTA />
-                <ScrollToTop />
-              </div>
-            </BrowserRouter>
+            <HelmetProvider>
+              <BrowserRouter>
+                <div className="relative min-h-screen bg-background">
+                  <Navbar />
+                  <main className="relative z-10">
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/about" element={<About />} />
+                      <Route path="/services" element={<Services />} />
+                      <Route path="/marketplace" element={<Marketplace />} />
+                      <Route path="/pricing" element={<Pricing />} />
+                      <Route path="/portfolio" element={<Portfolio />} />
+                      <Route path="/blog" element={<Blog />} />
+                      <Route path="/blog/:id" element={<BlogPost />} /> {/* New dynamic route for blog posts */}
+                      <Route path="/contact" element={<Contact />} />
+                      <Route path="/dashboard/*" element={<Dashboard />} />
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/register" element={<Register />} />
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </main>
+                  <Footer />
+                  <FloatingCTA />
+                  <ScrollToTop />
+                </div>
+              </BrowserRouter>
+            </HelmetProvider>
           </TooltipProvider>
         </AuthProvider>
       </ThemeProvider>

@@ -54,7 +54,7 @@ const team = [
     description: 'Tech innovator specializing in scalable web architectures.',
   },
   {
-    name: 'Rydham',
+    name: 'Rhythm',
     role: 'Head of Marketing',
     image: '/api/placeholder/150/150',
     description: 'Growth expert who has driven measurable success for clients.',

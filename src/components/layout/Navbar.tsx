@@ -18,7 +18,7 @@ const navigation = [
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/services' },
   { name: 'Marketplace', href: '/marketplace' },
-  { name: 'Pricing', href: '/pricing' },
+  { name: 'Our Services', href: '/pricing' },
   { name: 'Portfolio', href: '/portfolio' },
   { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },
@@ -130,41 +130,45 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-2">
             {navigation.map((item) => (
-              <Link
+              <motion.div
                 key={item.name}
-                to={item.href}
-                className={`relative text-sm font-medium transition-colors hover:text-primary ${
-                  location.pathname === item.href
-                    ? 'text-primary'
-                    : 'text-muted-foreground'
-                }`}
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
               >
-                {item.name}
-                {location.pathname === item.href && (
-                  <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600"
-                    layoutId="activeTab"
-                  />
-                )}
-              </Link>
+                <Link
+                  to={item.href}
+                  className={`text-sm font-medium transition-colors px-4 py-2 rounded-full ${
+                    location.pathname === item.href
+                      ? 'bg-orange-500/80 text-white'
+                      : 'text-muted-foreground hover:bg-muted'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
             ))}
           </div>
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
-              {theme === 'dark' ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )}
-            </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              >
+                {theme === 'dark' ? (
+                  <Sun className="h-4 w-4" />
+                ) : (
+                  <Moon className="h-4 w-4" />
+                )}
+              </Button>
+            </motion.div>
 
             {isAuthenticated ? (
               <DropdownMenu>
@@ -188,9 +192,14 @@ export default function Navbar() {
                 <Button variant="ghost" asChild>
                   <Link to="/login">Login</Link>
                 </Button>
-                <Button asChild>
-                  <Link to="/register">Get Started</Link>
-                </Button>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <Button asChild>
+                    <Link to="/register">Get Started</Link>
+                  </Button>
+                </motion.div>
               </>
             )}
           </div>
