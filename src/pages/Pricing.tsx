@@ -100,7 +100,7 @@ const serviceCategories = [
     ]
   },
   {
-    name: 'Shipping Solutions',
+    name: 'Dropshipping-Logistics Services',
     description: 'Seamless logistics and reliable shipping for your e-commerce business.',
     id: 'shipping',
     hasFixedPricing: false,

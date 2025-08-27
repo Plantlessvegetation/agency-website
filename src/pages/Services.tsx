@@ -122,7 +122,7 @@ const services = [
   {
     id: 'shipping',
     icon: Truck,
-    title: 'Shipping Solutions',
+    title: 'Dropshipping-Logistics Services',
     shortDescription: 'End-to-end fulfillment and logistics management',
     fullDescription: 'Complete dropshipping solution that handles everything from order processing to customer delivery, allowing you to focus on growth.',
     features: [

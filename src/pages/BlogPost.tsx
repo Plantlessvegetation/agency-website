@@ -124,7 +124,7 @@ const blogPosts = [
         <li><b>Custom Theme:</b> A unique design that reflects your brand.</li>
         <li><b>Local Payment Gateways:</b> Offer popular payment methods in India.</li>
         <li><b>Mobile Optimization:</b> Ensure a flawless shopping experience on all devices.</li>
-        <li><b>Logistics Integration:</b> Partner with reliable shipping solutions for timely delivery.</li>
+        <li><b>Logistics Integration:</b> Partner with reliable Dropshipping-Logistics Services for timely delivery.</li>
       </ul>
       <p>By focusing on these core elements, you can build a Shopify store that not only drives sales but also fosters customer loyalty and long-term business growth in the Indian market.</p>
     `
