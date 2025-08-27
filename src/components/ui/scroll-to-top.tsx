@@ -1,11 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function ScrollToTop() {
+  const { pathname, hash } = useLocation();
   const [isVisible, setIsVisible] = useState(false);
 
+  // This effect ensures the page scrolls to the top of the content on initial load and route changes.
+  useEffect(() => {
+    // If there is no hash in the URL, scroll to the top of the page.
+    // This allows for in-page navigation (links with #) to work correctly without being overridden.
+    if (hash === '') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [pathname, hash]);
+
+  // This effect handles the visibility of the "back to top" button.
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.pageYOffset > 300) {

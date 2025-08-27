@@ -16,9 +16,9 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
-  { name: 'Services', href: '/services' },
+  { name: 'Our Services', href: '/services' },
   { name: 'Marketplace', href: '/marketplace' },
-  { name: 'Our Services', href: '/pricing' },
+  { name: 'Get Quote', href: '/pricing' },
   { name: 'Portfolio', href: '/portfolio' },
   { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },

@@ -24,8 +24,11 @@ import Dashboard from '@/pages/Dashboard';
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import NotFound from '@/pages/NotFound';
-import BlogPost from '@/pages/BlogPost'; // New import for the blog post page
+import BlogPost from '@/pages/BlogPost';
 import { useState, useEffect } from 'react';
+
+// New import for the dedicated scroll-to-top component
+import ScrollToTopOnNavigate from '@/components/ScrollToTopOnNavigate';
 
 const queryClient = new QueryClient();
 
@@ -52,6 +55,8 @@ const App = () => {
             <Toaster />
             <HelmetProvider>
               <BrowserRouter>
+                {/* Add the new component here to handle automatic scrolling on navigation */}
+                <ScrollToTopOnNavigate />
                 <div className="relative min-h-screen bg-background overflow-x-hidden">
                   <Navbar />
                   <main className="relative z-10">
@@ -63,7 +68,7 @@ const App = () => {
                       <Route path="/pricing" element={<Pricing />} />
                       <Route path="/portfolio" element={<Portfolio />} />
                       <Route path="/blog" element={<Blog />} />
-                      <Route path="/blog/:id" element={<BlogPost />} /> {/* New dynamic route for blog posts */}
+                      <Route path="/blog/:id" element={<BlogPost />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/dashboard/*" element={<Dashboard />} />
                       <Route path="/login" element={<Login />} />
