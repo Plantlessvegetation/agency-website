@@ -157,19 +157,19 @@ export default function Pricing() {
     "description": category.description,
     "provider": {
       "@type": "Organization",
-      "name": "DigitalForge"
+      "name": "Galaxy V-Ecom"
     }
   }));
 
   return (
     <div className="min-h-screen pt-20">
       <Helmet>
-        <title>Our Services & Solutions | Web Development & Digital Marketing India - DigitalForge</title>
+        <title>Our Services & Solutions | Web Development & Digital Marketing India - Galaxy V-Ecom</title>
         <meta name="description" content="Explore our comprehensive suite of web development, SEO, digital marketing, and e-commerce solutions. We offer tailored services for every business need in India." />
         <link rel="canonical" href="https://yourdomain.com/pricing" />
 
         {/* Open Graph Tags */}
-        <meta property="og:title" content="Our Services & Solutions | DigitalForge" />
+        <meta property="og:title" content="Our Services & Solutions | Galaxy V-Ecom" />
         <meta property="og:description" content="Discover our wide range of services for web design, marketing, SEO, and business growth." />
         <meta property="og:url" content="https://yourdomain.com/pricing" />
         <meta property="og:image" content="https://yourdomain.com/og-services.jpg" />
@@ -177,7 +177,7 @@ export default function Pricing() {
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="DigitalForge Services & Solutions" />
+        <meta name="twitter:title" content="Galaxy V-Ecom Services & Solutions" />
         <meta name="twitter:description" content="Tailored digital solutions for web development and marketing in India." />
         <meta name="twitter:image" content="https://yourdomain.com/og-services.jpg" />
 
@@ -189,7 +189,7 @@ export default function Pricing() {
       
       {/* Hidden H1 for SEO */}
       <h1 className="sr-only">
-        DigitalForge Pricing Plans for Web Development & Digital Marketing Services in India
+        Galaxy V-Ecom Pricing Plans for Web Development & Digital Marketing Services in India
       </h1>
       
       {/* Hero Section */}

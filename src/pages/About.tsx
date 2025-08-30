@@ -75,7 +75,7 @@ export default function About() {
           >
             <Badge className="mb-6 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20">
               <Users className="w-4 h-4 mr-2" />
-              About DigitalForge
+              About Galaxy V-Ecom
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -235,7 +235,7 @@ export default function About() {
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Meet Our Key Members</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              The brilliant minds behind DigitalForge, each bringing unique expertise and passion.
+              The brilliant minds behind Galaxy V-Ecom, each bringing unique expertise and passion.
             </p>
           </motion.div>
 

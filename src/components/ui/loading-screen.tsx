@@ -32,7 +32,7 @@ export default function LoadingScreen() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          DigitalForge
+          Galaxy V-Ecom
         </motion.h2>
         <motion.p 
           className="text-muted-foreground mt-2"

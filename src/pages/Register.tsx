@@ -50,7 +50,7 @@ export default function Register() {
       await register(formData.name, formData.email, formData.password, formData.company);
       toast({
         title: "Account created successfully!",
-        description: "Welcome to DigitalForge. Your account has been created.",
+        description: "Welcome to Galaxy V-Ecom. Your account has been created.",
       });
       navigate('/dashboard');
     } catch (error) {
@@ -79,7 +79,7 @@ export default function Register() {
             </div>
             <CardTitle className="text-2xl">Create Account</CardTitle>
             <CardDescription>
-              Join DigitalForge and start your digital transformation
+              Join Galaxy V-Ecom and start your digital transformation
             </CardDescription>
           </CardHeader>
           <CardContent>

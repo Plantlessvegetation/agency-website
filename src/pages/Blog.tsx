@@ -128,12 +128,12 @@ export default function Blog() {
   return (
     <div className="min-h-screen pt-20">
       <Helmet>
-        <title>DigitalForge Blog | SEO, Web Development & Marketing Insights</title>
-        <meta name="description" content="Read the latest articles on SEO, digital marketing, web development, and business growth strategies by DigitalForge experts." />
+        <title>Galaxy V-Ecom Blog | SEO, Web Development & Marketing Insights</title>
+        <meta name="description" content="Read the latest articles on SEO, digital marketing, web development, and business growth strategies by Galaxy V-Ecom experts." />
         <link rel="canonical" href="https://yourdomain.com/blog" />
 
         {/* Open Graph Tags */}
-        <meta property="og:title" content="DigitalForge Blog | SEO & Digital Marketing Insights" />
+        <meta property="og:title" content="Galaxy V-Ecom Blog | SEO & Digital Marketing Insights" />
         <meta property="og:description" content="Stay updated with expert tips on SEO, marketing, and web development." />
         <meta property="og:url" content="https://yourdomain.com/blog" />
         <meta property="og:image" content="https://yourdomain.com/og-blog.jpg" />
@@ -160,7 +160,7 @@ export default function Blog() {
             </Badge>
             {/* The main <h1> for the page */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              DigitalForge Blog – Web Development & Marketing Tips India
+              Galaxy V-Ecom Blog – Web Development & Marketing Tips India
             </h1>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Stay ahead of the curve with our latest insights on digital marketing, 

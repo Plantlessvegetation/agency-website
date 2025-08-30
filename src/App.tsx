@@ -49,7 +49,7 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="dark" storageKey="digitalforge-theme">
+      <ThemeProvider defaultTheme="dark" storageKey="Galaxy V-Ecom-theme">
         <AuthProvider>
           <TooltipProvider>
             <Toaster />

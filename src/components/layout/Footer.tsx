@@ -81,7 +81,7 @@ export default function Footer() {
                 <span className="text-white font-bold text-sm">DF</span>
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                DigitalForge
+                Galaxy V-Ecom
               </span>
             </Link>
             <p className="text-muted-foreground mb-6 max-w-md">
@@ -93,7 +93,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-sm">
                 <Mail className="h-4 w-4 text-primary" />
-                <span>hello@digitalforge.com</span>
+                <span>hello@Galaxy V-Ecom.com</span>
               </div>
               <div className="flex items-center space-x-3 text-sm">
                 <Phone className="h-4 w-4 text-primary" />
@@ -160,7 +160,7 @@ export default function Footer() {
         <div className="py-6 border-t border-border/50">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © 2024 DigitalForge. All rights reserved.
+              © 2024 Galaxy V-Ecom. All rights reserved.
             </p>
             
             {/* Social Links */}

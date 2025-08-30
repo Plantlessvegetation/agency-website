@@ -55,7 +55,7 @@ export default function Login() {
             </div>
             <CardTitle className="text-2xl">Welcome Back</CardTitle>
             <CardDescription>
-              Sign in to access your DigitalForge dashboard
+              Sign in to access your Galaxy V-Ecom dashboard
             </CardDescription>
           </CardHeader>
           <CardContent>

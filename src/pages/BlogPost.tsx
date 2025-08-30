@@ -177,7 +177,7 @@ const blogPosts = [
     featured: false,
     image: '/api/placeholder/400/250',
     content: `
-      <p>Building a successful SaaS platform is a marathon, not a sprint. It requires a strategic approach, from initial concept validation to final deployment and scaling. At DigitalForge, we guide you through every step of this journey, ensuring your vision becomes a profitable reality.</p>
+      <p>Building a successful SaaS platform is a marathon, not a sprint. It requires a strategic approach, from initial concept validation to final deployment and scaling. At Galaxy V-Ecom, we guide you through every step of this journey, ensuring your vision becomes a profitable reality.</p>
       <p>The first step is always to validate your idea. We work with you to define your target audience, identify the core problem you're solving, and build a minimum viable product (MVP) to test the market. This lean approach saves time and resources, ensuring you're building a product that people actually need.</p>
       <p>Once validated, we focus on a scalable architecture. Using modern cloud technologies, we build a multi-tenant platform that can securely serve thousands of users. This includes implementing robust user management, flexible subscription models, and a custom API for future integrations.</p>
       <p>Finally, we don't just build and leave. We provide ongoing support, performance monitoring, and analytics dashboards to help you track your growth and make data-driven decisions. Our goal is to be your long-term technology partner, helping you scale your SaaS platform to new heights.</p>
@@ -216,7 +216,7 @@ export default function BlogPost() {
     },
     "publisher": {
       "@type": "Organization",
-      "name": "DigitalForge",
+      "name": "Galaxy V-Ecom",
       "logo": {
         "@type": "ImageObject",
         "url": "https://yourdomain.com/logo.png"
@@ -229,12 +229,12 @@ export default function BlogPost() {
   return (
     <div className="min-h-screen pt-20">
       <Helmet>
-        <title>{post.title} | DigitalForge Blog</title>
+        <title>{post.title} | Galaxy V-Ecom Blog</title>
         <meta name="description" content={post.excerpt} />
         <link rel="canonical" href={`https://yourdomain.com/blog/${post.id}`} />
         
         {/* Open Graph Tags */}
-        <meta property="og:title" content={`${post.title} | DigitalForge Blog`} />
+        <meta property="og:title" content={`${post.title} | Galaxy V-Ecom Blog`} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:url" content={`https://yourdomain.com/blog/${post.id}`} />
         <meta property="og:image" content={`https://yourdomain.com${post.image}`} />

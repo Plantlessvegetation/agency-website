@@ -14,9 +14,9 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email Us',
-    content: 'hello@digitalforge.com',
+    content: 'hello@Galaxy V-Ecom.com',
     description: 'Send us an email anytime',
-    href: 'mailto:hello@digitalforge.com'
+    href: 'mailto:hello@Galaxy V-Ecom.com'
   },
   {
     icon: Phone,
@@ -283,7 +283,7 @@ export default function Contact() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="outline" asChild>
-                <a href="mailto:hello@digitalforge.com">
+                <a href="mailto:hello@Galaxy V-Ecom.com">
                   <Mail className="mr-2 h-5 w-5" />
                   Send Email
                 </a>

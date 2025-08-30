@@ -22,7 +22,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const savedUser = localStorage.getItem('digitalforge-user');
+    const savedUser = localStorage.getItem('Galaxy V-Ecom-user');
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
@@ -39,7 +39,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         plan: 'Pro'
       };
       setUser(mockUser);
-      localStorage.setItem('digitalforge-user', JSON.stringify(mockUser));
+      localStorage.setItem('Galaxy V-Ecom-user', JSON.stringify(mockUser));
     } else {
       throw new Error('Invalid credentials');
     }
@@ -56,7 +56,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         plan: 'Startup'
       };
       setUser(mockUser);
-      localStorage.setItem('digitalforge-user', JSON.stringify(mockUser));
+      localStorage.setItem('Galaxy V-Ecom-user', JSON.stringify(mockUser));
     } else {
       throw new Error('Invalid registration data');
     }
@@ -64,7 +64,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('digitalforge-user');
+    localStorage.removeItem('Galaxy V-Ecom-user');
   };
 
   return (
