@@ -23,7 +23,7 @@ export default function FloatingCTA() {
     {
       icon: Mail,
       label: 'Email',
-      href: 'mailto:hello@Galaxy V-Ecom.com',
+      href: 'mailto:tushar.readyflow@gmail.com',
       color: 'bg-purple-500 hover:bg-purple-600',
     },
   ];

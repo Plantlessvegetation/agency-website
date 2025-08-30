@@ -14,14 +14,14 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email Us',
-    content: 'hello@Galaxy V-Ecom.com',
+    content: 'tushar.readyflow@gmail.com',
     description: 'Send us an email anytime',
-    href: 'mailto:hello@Galaxy V-Ecom.com'
+    href: 'mailto:tushar.readyflow@gmail.com'
   },
   {
     icon: Phone,
     title: 'Call Us',
-    content: '+1 (555) 123-4567',
+    content: '7067507872, 8953379628,',
     description: 'Mon-Fri from 8am to 6pm',
     href: 'tel:+15551234567'
   },
@@ -178,7 +178,7 @@ export default function Contact() {
                           type="tel"
                           value={formData.phone}
                           onChange={handleInputChange}
-                          placeholder="+1 (555) 123-4567"
+                          placeholder="7067507872, 8953379628,"
                         />
                       </div>
                     </div>
@@ -283,7 +283,7 @@ export default function Contact() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="outline" asChild>
-                <a href="mailto:hello@Galaxy V-Ecom.com">
+                <a href="mailto:tushar.readyflow@gmail.com">
                   <Mail className="mr-2 h-5 w-5" />
                   Send Email
                 </a>
