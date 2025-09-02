@@ -21,9 +21,9 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'Call Us',
-    content: '7067507872, 8953379628,',
+    content: '8726026444',
     description: 'Mon-Fri from 8am to 6pm',
-    href: 'tel:+15551234567'
+    href: 'tel:+918726026444'
   },
   {
     icon: MapPin,
@@ -72,21 +72,43 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    try {
+      const response = await fetch("https://formspree.io/f/mblaaezd", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for your message. We'll get back to you within 24 hours.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          service: "",
+          message: "",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Something went wrong. Please try again later.",
+        });
+      }
+    } catch (error) {
       toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. We'll get back to you within 24 hours.",
+        title: "Error",
+        description: "Unable to send message. Please check your connection.",
       });
+    } finally {
       setIsSubmitting(false);
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        service: '',
-        message: ''
-      });
-    }, 2000);
+    }
   };
 
   return (
@@ -257,7 +279,7 @@ export default function Contact() {
                     We respond to all inquiries within 2 hours during business hours.
                   </p>
                   <Button variant="secondary" size="sm" asChild>
-                    <a href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/+918726026444?text=Hi,%20I%20want%20to%20grow%20my%20business%20with%20Galaxy%20V-Ecom" target="_blank" rel="noopener noreferrer">
                       Chat on WhatsApp
                     </a>
                   </Button>
@@ -289,7 +311,7 @@ export default function Contact() {
                 </a>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <a href="tel:+15551234567">
+                <a href="tel:+918726026444">
                   <Phone className="mr-2 h-5 w-5" />
                   Call Now
                 </a>

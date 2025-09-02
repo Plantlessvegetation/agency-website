@@ -342,13 +342,13 @@ export default function Pricing() {
                         </Link>
                       </Button>
                       <Button variant="outline" size="lg" className="w-full" asChild>
-                        <a href="https://wa.me/917067507872, 8953379628,90" target="_blank" rel="noopener noreferrer">
+                        <a href="https://wa.me/+918726026444?text=Hi,%20I%20want%20to%20grow%20my%20business%20with%20Galaxy%20V-Ecom" target="_blank" rel="noopener noreferrer">
                           <MessageCircle className="mr-2 h-5 w-5" />
                           Chat on WhatsApp
                         </a>
                       </Button>
                       <Button variant="outline" size="lg" asChild>
-                        <a href="tel:+917067507872, 8953379628,90">
+                        <a href="tel:+918726026444">
                           <Phone className="mr-2 h-5 w-5" />
                           Call Now
                         </a>
