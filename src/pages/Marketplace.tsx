@@ -330,7 +330,6 @@ export default function Marketplace() {
                         {product.rating} ({product.reviews} reviews)
                       </span>
                     </div>
-                    
                     <div className="flex items-center space-x-2 mb-3">
                       <span className="text-2xl font-bold text-primary">{product.price}</span>
               
