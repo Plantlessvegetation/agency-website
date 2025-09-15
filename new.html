@@ -1,0 +1,1373 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Elegant Essentials</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient-left: #F6FBFF;
+            --bg-gradient-right: #FFF6FB;
+            --primary: #6C4BFF;
+            --primary-dark: #5B3CDB;
+            --accent-pink: #F7D7F3;
+            --lavender: #F3EAFB;
+            --muted-text: #6B6B72;
+            --text: #22222A;
+            --card-bg: #FFFFFF;
+            --footer-bg: #262626;
+            --shadow-lg: 0 30px 60px rgba(108, 75, 255, 0.08);
+            --shadow-md: 0 10px 30px rgba(16, 24, 40, 0.06);
+            --radius-md: 16px;
+            --radius-sm: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Utility classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .rounded-sm {
+            border-radius: var(--radius-sm);
+        }
+
+        .rounded-md {
+            border-radius: var(--radius-md);
+        }
+
+        .shadow-md {
+            box-shadow: var(--shadow-md);
+        }
+
+        .transition-transform {
+            transition: transform .28s cubic-bezier(.2, .9, .3, 1), box-shadow .28s;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .pill-btn {
+            height: 44px;
+            padding: 0 28px;
+            border-radius: 24px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            box-shadow: 0 8px 20px rgba(108, 75, 255, 0.14);
+            transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+        }
+
+        .pill-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(108, 75, 255, 0.2);
+        }
+
+        /* Header */
+        header {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background-color: var(--card-bg);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+
+        .nav-link a:hover {
+            color: var(--primary);
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease;
+        }
+
+        .icon-btn:hover {
+            background-color: rgba(108, 75, 255, 0.06);
+        }
+
+        .icon-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--text);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(120deg, var(--bg-gradient-left), var(--bg-gradient-right));
+            padding: 80px 8%;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 50%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .6s ease-out .2s, transform .6s ease-out .2s;
+        }
+
+        .hero-text.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 54px;
+            line-height: 1.02;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .hero p {
+            max-width: 520px;
+            font-size: 16px;
+            color: var(--muted-text);
+            margin: 18px 0 32px;
+        }
+
+        .hero-card-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .6s ease-out .4s, transform .6s ease-out .4s;
+        }
+
+        .hero-card-wrapper.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-card {
+            width: 520px;
+            height: 360px;
+            border-radius: 24px;
+            background: linear-gradient(120deg, #F9DFF2, #FFEFF8);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-card svg {
+            width: 150px;
+            height: 150px;
+            color: #d1d1d1;
+        }
+
+        /* Main sections */
+        main section {
+            padding: 80px 0;
+        }
+
+        main section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .categories .grid,
+        .featured .grid,
+        .gifts .grid,
+        .why .flex,
+        .testimonials .grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        /* Shop by Category */
+        .categories .grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .category-card {
+            background-color: var(--lavender);
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px;
+            height: 140px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            transition: transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+        
+        .category-card-icon {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-card-icon svg {
+            width: 50px;
+            height: 50px;
+            color: var(--primary);
+            fill: var(--primary);
+        }
+
+        .category-label {
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 6px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            color: var(--muted-text);
+            font-weight: 600;
+        }
+        
+        /* Featured Products */
+        .featured .grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            padding: 12px;
+            position: relative;
+            transition: transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 260px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image svg {
+            width: 80px;
+            height: 80px;
+            color: #d1d1d1;
+        }
+        
+        .product-details {
+            padding-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .product-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .product-price {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 2px;
+        }
+
+        .star-rating svg {
+            width: 16px;
+            height: 16px;
+            fill: #FFD700;
+            color: #FFD700;
+        }
+
+        .add-to-cart-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .product-card:hover .add-to-cart-overlay {
+            opacity: 1;
+        }
+
+        .add-to-cart-overlay svg {
+            width: 18px;
+            height: 18px;
+            color: var(--primary);
+            stroke: var(--primary);
+        }
+
+        /* Gift Cards & Offers */
+        .gifts .grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .gift-card {
+            background: linear-gradient(135deg, #F3EAFB, #FFEFF8);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 190px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            position: relative;
+        }
+        
+        .gift-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: var(--radius-md);
+            box-shadow: inset 0 0 10px rgba(108, 75, 255, 0.05);
+            pointer-events: none;
+        }
+
+        .gift-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .gift-card p {
+            font-size: 14px;
+            color: var(--muted-text);
+            margin-bottom: 24px;
+        }
+        
+        .gift-card .pill-btn {
+            height: 40px;
+            font-size: 14px;
+            padding: 0 20px;
+        }
+        
+        /* Why Choose Us */
+        .why .flex {
+            gap: 24px;
+        }
+
+        .feature-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .feature-icon-wrapper {
+            width: 56px;
+            height: 56px;
+            background-color: var(--lavender);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .feature-icon-wrapper svg {
+            width: 24px;
+            height: 24px;
+            color: var(--primary);
+            stroke: var(--primary);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        
+        .feature-item h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .feature-item p {
+            font-size: 14px;
+            color: var(--muted-text);
+        }
+
+        /* Testimonials */
+        .testimonials .grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            min-height: 160px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .testimonial-avatar svg {
+            width: 20px;
+            height: 20px;
+            color: #d1d1d1;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            color: var(--muted-text);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-bg);
+            color: #eee;
+            padding: 60px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .footer-col:first-child {
+            flex: 2;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            color: #bbb;
+            margin-bottom: 24px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-icons a svg {
+            width: 20px;
+            height: 20px;
+            color: #bbb;
+            transition: color 0.2s;
+        }
+
+        .social-icons a:hover svg {
+            color: #fff;
+        }
+
+        .footer-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            white-space: nowrap;
+        }
+
+        .footer-links li {
+            list-style: none;
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: #bbb;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .contact-info p {
+            font-size: 14px;
+            color: #bbb;
+            margin-bottom: 12px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            height: 40px;
+            padding: 0 16px;
+            border-radius: 20px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .newsletter-form input::placeholder {
+            color: #888;
+        }
+        
+        .subscribe-btn {
+            height: 40px;
+            border-radius: 20px;
+            background-color: var(--primary);
+            color: #fff;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .subscribe-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .subscribe-message {
+            color: #fff;
+            font-size: 14px;
+            margin-top: 8px;
+            display: none;
+            text-align: center;
+        }
+
+        .bottom-bar {
+            background-color: #1e1e1e;
+            padding: 16px 0;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Mobile Nav */
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-bg);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 999;
+            padding: 24px;
+            display: none;
+        }
+
+        .mobile-menu.open {
+            transform: translateY(0);
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .mobile-menu a {
+            font-size: 18px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 1199px) {
+            .nav-links, .header-icons {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hamburger svg {
+                width: 24px;
+                height: 24px;
+                stroke: var(--text);
+                stroke-width: 2;
+                fill: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 60px 5%;
+                text-align: center;
+            }
+
+            .hero-text, .hero-card-wrapper {
+                max-width: 100%;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 40px;
+            }
+
+            .hero-card {
+                width: 100%;
+                max-width: 520px;
+                height: 300px;
+            }
+
+            main section h2 {
+                font-size: 24px;
+            }
+
+            .categories .grid,
+            .featured .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gifts .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why .flex {
+                flex-wrap: wrap;
+            }
+
+            .feature-item {
+                flex-basis: calc(50% - 12px);
+                margin-bottom: 24px;
+            }
+
+            .testimonials .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .footer-col {
+                flex: 1 1 45%;
+                margin-bottom: 20px;
+            }
+
+            .footer-col:first-child, .footer-col:last-child {
+                flex-basis: 100%;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 767px) {
+            header {
+                height: 60px;
+            }
+
+            .hero {
+                padding: 40px 24px;
+            }
+            
+            .hero-text h1 {
+                font-size: 32px;
+            }
+
+            .hero-card {
+                height: 250px;
+            }
+
+            main section {
+                padding: 50px 0;
+            }
+
+            main section h2 {
+                font-size: 20px;
+                margin-bottom: 30px;
+            }
+            
+            .categories .grid,
+            .featured .grid,
+            .gifts .grid,
+            .testimonials .grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .why .flex {
+                flex-direction: column;
+            }
+            
+            .feature-item {
+                margin-bottom: 30px;
+            }
+
+            .footer-col {
+                text-align: center;
+                width: 100%;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .newsletter-form {
+                align-items: center;
+            }
+            
+            .newsletter-form input {
+                width: 80%;
+            }
+            
+            .subscribe-btn {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Elegant Essentials</a>
+            <nav role="navigation" class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Shop</a>
+                <a href="#">Collections</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+            <div class="header-icons">
+                <button aria-label="Search" class="icon-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <button aria-label="User Profile" class="icon-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </button>
+                <button aria-label="Wishlist" class="icon-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </button>
+                <button aria-label="Shopping Cart" class="icon-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                </button>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Collections</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Elevate Your Style</h1>
+                <p>Discover our handcrafted collection of premium fashion accessories designed to complement your unique style.</p>
+                <button class="pill-btn">Shop Now</button>
+            </div>
+            <div class="hero-card-wrapper">
+                <div class="hero-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <line x1="10" y1="9" x2="8" y2="9"></line>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories">
+            <div class="container">
+                <h2 class="text-center">Shop by Category</h2>
+                <div class="grid">
+                    <div class="category-card hover-lift transition-transform">
+                        <div class="category-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L2 7v10l10 5 10-5V7L12 2z"></path>
+                                <path d="M12 22V12"></path>
+                                <path d="M22 7L12 12l-10-5"></path>
+                                <path d="M12 2v10l10 5"></path>
+                                <path d="M22 7V2"></path>
+                            </svg>
+                        </div>
+                        <div class="category-label">Clothing</div>
+                    </div>
+                    <div class="category-card hover-lift transition-transform">
+                        <div class="category-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 10h.01"></path>
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                        </div>
+                        <div class="category-label">Footwear</div>
+                    </div>
+                    <div class="category-card hover-lift transition-transform">
+                        <div class="category-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 21V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v16"></path>
+                                <path d="M2 17h20"></path>
+                                <path d="M2 17a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-4"></path>
+                                <path d="M12 21a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2z"></path>
+                            </svg>
+                        </div>
+                        <div class="category-label">Handbags</div>
+                    </div>
+                    <div class="category-card hover-lift transition-transform">
+                        <div class="category-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 20s8-6 8-10A5 5 0 0 0 12 5a5 5 0 0 0-8 5c0 4 8 10 8 10z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="category-label">Jewelry</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured">
+            <div class="container">
+                <h2 class="text-center">Featured Products</h2>
+                <div class="grid">
+                    <div class="product-card hover-lift transition-transform">
+                        <div class="product-image">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <line x1="10" y1="9" x2="8" y2="9"></line>
+                            </svg>
+                            <button aria-label="Add Silk Scarf to cart" class="add-to-cart-overlay">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-title">Silk Scarf</span>
+                            <span class="product-price">₹2,499</span>
+                            <div class="star-rating">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card hover-lift transition-transform">
+                        <div class="product-image">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <line x1="10" y1="9" x2="8" y2="9"></line>
+                            </svg>
+                             <button aria-label="Add Leather Tote Bag to cart" class="add-to-cart-overlay">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-title">Leather Tote Bag</span>
+                            <span class="product-price">₹4,999</span>
+                            <div class="star-rating">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card hover-lift transition-transform">
+                        <div class="product-image">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <line x1="10" y1="9" x2="8" y2="9"></line>
+                            </svg>
+                             <button aria-label="Add Gold Bracelet to cart" class="add-to-cart-overlay">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-title">Gold Bracelet</span>
+                            <span class="product-price">₹3,299</span>
+                            <div class="star-rating">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card hover-lift transition-transform">
+                        <div class="product-image">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <line x1="10" y1="9" x2="8" y2="9"></line>
+                            </svg>
+                             <button aria-label="Add Embroidered Clutch to cart" class="add-to-cart-overlay">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="product-details">
+                            <span class="product-title">Embroidered Clutch</span>
+                            <span class="product-price">₹1,899</span>
+                            <div class="star-rating">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gifts">
+            <div class="container">
+                <h2 class="text-center">Gift Cards & Special Offers</h2>
+                <div class="grid">
+                    <div class="gift-card rounded-md">
+                        <h3>₹1000 Gift Card</h3>
+                        <p>Perfect for birthdays and special occasions. Valid for 12 months.</p>
+                        <button class="pill-btn">Buy Gift Card</button>
+                    </div>
+                    <div class="gift-card rounded-md">
+                        <h3>₹2500 Gift Card</h3>
+                        <p>Give the gift of choice with our premium gift card option.</p>
+                        <button class="pill-btn">Buy Gift Card</button>
+                    </div>
+                    <div class="gift-card rounded-md">
+                        <h3>Special Offer</h3>
+                        <p>Get 15% off your first purchase when you sign up for our newsletter.</p>
+                        <button class="pill-btn">Sign Up Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why">
+            <div class="container">
+                <h2 class="text-center">Why Choose Us</h2>
+                <div class="flex">
+                    <div class="feature-item">
+                        <div class="feature-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="3" width="15" height="13"></rect>
+                                <polygon points="16 8 20 12 20 20 16 16 16 8"></polygon>
+                                <line x1="1" y1="19" x2="16" y2="19"></line>
+                                <circle cx="8" cy="21" r="2"></circle>
+                                <circle cx="15" cy="21" r="2"></circle>
+                            </svg>
+                        </div>
+                        <h3>Fast Shipping</h3>
+                        <p>Free shipping on orders over ₹1500. Delivery within 3-5 business days.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <h3>Secure Payments</h3>
+                        <p>Multiple secure payment options with encrypted transactions.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="19" y1="12" x2="5" y2="12"></line>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Easy Returns</h3>
+                        <p>30-day hassle-free return policy with full refund guarantee.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 15h2a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1z"></path>
+                                <path d="M12 2L6.5 6.5a1.5 1.5 0 0 0 0 2.12l6 6a1.5 1.5 0 0 0 2.12 0l6-6a1.5 1.5 0 0 0 0-2.12L12 2z"></path>
+                            </svg>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Our customer service team is available around the clock to assist you.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="text-center">What Our Customers Say</h2>
+                <div class="grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="testimonial-name">Priya Sharma</h4>
+                                <div class="star-rating">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">"The quality of the silk scarf I purchased exceeded my expectations. The colors are vibrant and the material feels luxurious. Will definitely shop here again!"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="testimonial-name">Ananya Patel</h4>
+                                <div class="star-rating">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">"I bought the leather tote bag as a gift for my sister and she absolutely loves it! The craftsmanship is excellent and the delivery was faster than expected."</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="testimonial-name">Rahul Mehta</h4>
+                                <div class="star-rating">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">"The customer service is outstanding! I had a question about my order and received a response within minutes. The jewelry I purchased is stunning and unique."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-col">
+                <span class="footer-logo">Elegant Essentials</span>
+                <p>We are dedicated to bringing you the finest handcrafted accessories from across India. Each piece tells a story of tradition, craftsmanship, and contemporary design.</p>
+                <div class="social-icons">
+                    <a aria-label="Facebook" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a aria-label="Instagram" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a aria-label="Twitter" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Information</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Contact Us</h4>
+                <address class="contact-info">
+                    <p>123 Fashion Street, Mumbai, India</p>
+                    <p>+91 98765 43210</p>
+                    <p>info@elegantessentials.com</p>
+                </address>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" aria-label="Enter your email for newsletter">
+                    <button class="subscribe-btn">Subscribe</button>
+                    <span class="subscribe-message">Thank you — check your email!</span>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            © 2023 Elegant Essentials. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroText = document.querySelector('.hero-text');
+            const heroCardWrapper = document.querySelector('.hero-card-wrapper');
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const subscribeBtn = document.querySelector('.subscribe-btn');
+            const subscribeMessage = document.querySelector('.subscribe-message');
+
+            // Entrance animation
+            setTimeout(() => {
+                heroText.classList.add('loaded');
+                heroCardWrapper.classList.add('loaded');
+            }, 100);
+
+            // Mobile nav toggle
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+                document.body.classList.toggle('no-scroll');
+            });
+            
+            // Newsletter subscribe
+            subscribeBtn.addEventListener('click', () => {
+                const emailInput = subscribeBtn.previousElementSibling;
+                if (emailInput.value.trim() !== '') {
+                    subscribeMessage.style.display = 'block';
+                    emailInput.value = '';
+                    setTimeout(() => {
+                        subscribeMessage.style.display = 'none';
+                    }, 3000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
