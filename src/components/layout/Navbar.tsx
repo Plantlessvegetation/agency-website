@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, Moon, Sun, User, LogOut } from 'lucide-react';
+import { Menu, Moon, Sun, User, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/components/theme-provider';
 import { useAuth } from '@/contexts/AuthContext';
@@ -15,9 +15,9 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const navigation = [
   { name: 'Home', href: '/' },
+  { name: 'About us', href: 'https://galaxyvecom.netlify.app/about', external: true },
   { name: 'Our Services', href: '/services' },
   { name: 'Marketplace', href: '/marketplace' },
-  { name: 'Get Quote', href: '/pricing' },
   { name: 'Portfolio', href: '/portfolio' },
   { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },
@@ -41,8 +41,8 @@ export default function Navbar() {
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-background/80 backdrop-blur-md border-b border-border/50' 
+        isScrolled
+          ? 'bg-background/80 backdrop-blur-md border-b border-border/50'
           : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
@@ -51,9 +51,8 @@ export default function Navbar() {
     >
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Mobile Navigation (Visible only on smaller screens) */}
+          {/* Mobile Navigation */}
           <div className="lg:hidden flex items-center justify-between w-full">
-            {/* Logo on the left */}
             <div className="flex items-center space-x-2">
               <Link to="/" className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
@@ -64,39 +63,49 @@ export default function Navbar() {
                 </span>
               </Link>
             </div>
-            
-            {/* Mobile menu and dark mode toggle on the right */}
+
             <div className="flex items-center space-x-2">
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               >
-                {theme === 'dark' ? (
-                  <Sun className="h-4 w-4" />
-                ) : (
-                  <Moon className="h-4 w-4" />
-                )}
+                {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
               </Button>
+
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <SheetTrigger asChild>
                   <Button variant="ghost" size="icon">
                     <Menu className="h-4 w-4" />
                   </Button>
                 </SheetTrigger>
+
                 <SheetContent side="right" className="w-80">
                   <div className="flex flex-col space-y-4 mt-8">
-                    {navigation.map((item) => (
-                      <Link
-                        key={item.name}
-                        to={item.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="text-lg font-medium hover:text-primary transition-colors"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                    
+                    {navigation.map((item) =>
+                      item.external ? (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="text-lg font-medium hover:text-primary transition-colors"
+                        >
+                          {item.name}
+                        </a>
+                      ) : (
+                        <Link
+                          key={item.name}
+                          to={item.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="text-lg font-medium hover:text-primary transition-colors"
+                        >
+                          {item.name}
+                        </Link>
+                      )
+                    )}
+
                     <div className="border-t border-border pt-4 space-y-2">
                       {isAuthenticated ? (
                         <>
@@ -130,7 +139,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Desktop Navigation (Visible only on larger screens) */}
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center justify-between w-full">
             <Link to="/" className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
@@ -142,34 +151,48 @@ export default function Navbar() {
             </Link>
 
             <div className="relative flex items-center space-x-2 bg-card/50 backdrop-blur-sm rounded-full p-1 border border-border/50">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="relative px-4 py-2 text-sm font-medium rounded-full z-10 transition-colors duration-300"
-                >
-                  <motion.span
-                    className={`relative z-20 transition-colors duration-300 ${
-                      location.pathname === item.href
-                        ? 'text-white'
-                        : 'text-muted-foreground hover:text-primary'
-                    }`}
+              {navigation.map((item) =>
+                item.external ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative px-4 py-2 text-sm font-medium rounded-full z-10 transition-colors duration-300 text-muted-foreground hover:text-primary"
                   >
                     {item.name}
-                  </motion.span>
-                  {location.pathname === item.href && (
-                    <motion.div
-                      layoutId="active-indicator"
-                      className="absolute inset-0 rounded-full bg-orange-500/80"
-                      transition={{
-                        type: 'spring',
-                        stiffness: 350,
-                        damping: 30,
-                      }}
-                    />
-                  )}
-                </Link>
-              ))}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="relative px-4 py-2 text-sm font-medium rounded-full z-10 transition-colors duration-300"
+                  >
+                    <motion.span
+                      className={`relative z-20 transition-colors duration-300 ${
+                        location.pathname === item.href
+                          ? 'text-white'
+                          : 'text-muted-foreground hover:text-primary'
+                      }`}
+                    >
+                      {item.name}
+                    </motion.span>
+
+                    {/* show active indicator only for internal routes */}
+                    {location.pathname === item.href && (
+                      <motion.div
+                        layoutId="active-indicator"
+                        className="absolute inset-0 rounded-full bg-orange-500/80"
+                        transition={{
+                          type: 'spring',
+                          stiffness: 350,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </Link>
+                )
+              )}
             </div>
 
             <div className="flex items-center space-x-4">
@@ -178,12 +201,9 @@ export default function Navbar() {
                 size="icon"
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               >
-                {theme === 'dark' ? (
-                  <Sun className="h-4 w-4" />
-                ) : (
-                  <Moon className="h-4 w-4" />
-                )}
+                {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
               </Button>
+
               {isAuthenticated ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -191,6 +211,7 @@ export default function Navbar() {
                       <User className="h-4 w-4" />
                     </Button>
                   </DropdownMenuTrigger>
+
                   <DropdownMenuContent align="end">
                     <DropdownMenuItem asChild>
                       <Link to="/dashboard">Dashboard</Link>
