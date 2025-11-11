@@ -31,7 +31,7 @@ const timeline = [
   {
     year: '2018',
     title: 'Foundation',
-    description: 'Officially launched on December 9th, 2024, with a vision to empower businesses digitally.',
+    description: 'Officially launched on December 9th, 2018, with a vision to empower businesses digitally.',
   },
   {
     year: '2025',
