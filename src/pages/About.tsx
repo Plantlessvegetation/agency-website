@@ -54,7 +54,7 @@ const team = [
     description: 'Tech innovator specializing in scalable web architectures.',
   },
   {
-    name: 'Rhythm',
+    name: '',
     role: 'Head of Marketing',
     image: '/api/placeholder/150/150',
     description: 'Growth expert who has driven measurable success for clients.',
@@ -82,7 +82,7 @@ export default function About() {
                 Forging Digital Excellence
               </span>
               <br />
-              Since 2024
+              Since 2018
             </h1>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               We're not just another digital agency. We're your partners in transformation, 
