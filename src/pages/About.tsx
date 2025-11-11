@@ -211,7 +211,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* Team Section (centered founder card) */}
       <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -223,40 +223,43 @@ export default function About() {
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Meet Our Founder</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              The brilliant minds behind Galaxy V-Ecom, each bringing unique expertise and passion.
+              The visionary leader behind Galaxy V-Ecom, bringing deep expertise and a hands-on approach.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="group"
-              >
-                <Card className="text-center bg-card/50 backdrop-blur-sm border-border/50 hover:border-border transition-all duration-300">
-                  <CardHeader>
-                    <Avatar className="w-24 h-24 mx-auto mb-4">
-                      <AvatarImage src={member.image} alt={member.name} />
-                      <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </AvatarFallback>
-                    </Avatar>
-                    <CardTitle className="text-xl mb-2">{member.name}</CardTitle>
-                    <CardDescription className="text-primary font-medium mb-2">
-                      {member.role}
-                    </CardDescription>
-                    <CardDescription>
-                      {member.description}
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              </motion.div>
-            ))}
+          {/* Centering wrapper: constrain width and center the grid */}
+          <div className="max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 gap-8 justify-items-center">
+              {team.map((member, index) => (
+                <motion.div
+                  key={member.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="group w-full"
+                >
+                  <Card className="text-center bg-card/50 backdrop-blur-sm border-border/50 hover:border-border transition-all duration-300 w-full max-w-md mx-auto">
+                    <CardHeader>
+                      <Avatar className="w-24 h-24 mx-auto mb-4">
+                        <AvatarImage src={member.image} alt={member.name} />
+                        <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg">
+                          {member.name.split(' ').map(n => n[0]).join('')}
+                        </AvatarFallback>
+                      </Avatar>
+                      <CardTitle className="text-xl mb-2">{member.name}</CardTitle>
+                      <CardDescription className="text-primary font-medium mb-2">
+                        {member.role}
+                      </CardDescription>
+                      <CardDescription>
+                        {member.description}
+                      </CardDescription>
+                    </CardHeader>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
