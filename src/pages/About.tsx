@@ -29,7 +29,7 @@ const values = [
 
 const timeline = [
   {
-    year: '2024',
+    year: '2018',
     title: 'Foundation',
     description: 'Officially launched on December 9th, 2024, with a vision to empower businesses digitally.',
   },
@@ -46,18 +46,6 @@ const team = [
     role: 'CEO & Founder',
     image: '/api/placeholder/150/150',
     description: 'Visionary leader with a passion for digital transformation.',
-  },
-  {
-    name: 'Aditya Bajpai',
-    role: 'CTO',
-    image: '/api/placeholder/150/150',
-    description: 'Tech innovator specializing in scalable web architectures.',
-  },
-  {
-    name: '',
-    role: 'Head of Marketing',
-    image: '/api/placeholder/150/150',
-    description: 'Growth expert who has driven measurable success for clients.',
   },
 ];
 
@@ -233,7 +221,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Meet Our Key Members</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Meet Our Founder</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               The brilliant minds behind Galaxy V-Ecom, each bringing unique expertise and passion.
             </p>
