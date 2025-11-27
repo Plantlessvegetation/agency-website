@@ -93,15 +93,15 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-sm">
                 <Mail className="h-4 w-4 text-primary" />
-                <span>tushar.readyflow@gmail.com</span>
+                <span>info.galaxyvcom@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3 text-sm">
                 <Phone className="h-4 w-4 text-primary" />
-                <span>7067507872, 8953379628</span>
+                <span>8602555840, 8726026444</span>
               </div>
               <div className="flex items-center space-x-3 text-sm">
                 <MapPin className="h-4 w-4 text-primary" />
-                <span>123 Digital Avenue, Tech City, TC 12345</span>
+                <span>F-281, Gali No.7, Pandav Nagar, Mayur Vihar Phase-1, 110091, New Delhi</span>
               </div>
             </div>
           </div>
