@@ -101,7 +101,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3 text-sm">
                 <MapPin className="h-4 w-4 text-primary" />
-                <span>F-281, Gali No.7, Pandav Nagar, Mayur Vihar Phase-1, 110091, New Delhi</span>
+                <span>Plot# 250, Phase IV, Udyog Vihar, Sector 18, Gurugram, Haryana 122015</span>
               </div>
             </div>
           </div>
